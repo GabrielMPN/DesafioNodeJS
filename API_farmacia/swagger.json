@@ -1,0 +1,400 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API Farmacia - microserviço ",
+        "description": "API feita para o desafio NodeJS proposto pela empresa PEDIDO PAGO",
+        "version": "1.0.0",
+        "contact": {
+            "email": "pantuffimpn@hotmail.com"
+        }
+    },
+    "tags": [
+        {
+            "name": "Sede",
+            "description": "Endpoints referente as sedes"
+        },
+        {
+            "name": "Filial",
+            "description": "Endpoints referente as filiais"
+        }
+    ],
+    "paths": {
+      "/farmacia/sedes": {
+          "get": {
+              "description": "",
+              "summary": "Lista todas as sedes",
+              "tags": [
+                  "Sede"
+              ],
+              "responses": {
+                      "200": {
+                          "description": "Retorna todas as sedes"
+                      },
+                      "404": {
+                          "description": "Não existe sedes"
+                      },
+                      "500": {
+                          "description": "Erro inesperado"
+                      }
+              }
+          }
+      },
+      "/farmacia/sede": {
+        "post": {
+            "description": "",
+            "summary": "Cria uma sede",
+            "tags": [
+                "Sede"
+            ],
+            "parameters": [
+                {
+             "in": "formData",
+             "name": "logo",
+             "required": true,
+             "type": "file"
+             },
+            {
+                "in": "formData",
+                "name": "nome",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "cnpj",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "endereco",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "horario_funcionamento",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "responsavel",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "telefone",
+                "required": true,
+                "type": "string"
+               }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Criou uma nova sede (retorna um JSON da sede criada)"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/atualizar/sede/{cnpj}": {
+        "put": {
+            "description": "",
+            "summary": "Atualiza uma sede",
+            "tags": [
+                "Sede"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "cnpj",
+                    "required": true,
+                    "type": "string"
+                    },          
+                {
+             "in": "formData",
+             "name": "logo",
+             "required": false,
+             "type": "file"
+             },
+            {
+                "in": "formData",
+                "name": "nome",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "cnpj",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "endereco",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "horario_funcionamento",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "responsavel",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "telefone",
+                "required": false,
+                "type": "string"
+               }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Atualizou uma sede (retorna um JSON)"
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/deletar/sede/{cnpj}": {
+        "delete": {
+            "description": "",
+            "summary": "Deleta uma sede e suas filiais",
+            "tags": [
+                "Sede"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "cnpj",
+                    "required": true,
+                    "type": "string"
+                    }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Sede e suas filiais deletadas com sucesso"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/sede/{cnpj}": {
+        "get": {
+            "description": "",
+            "summary": "Retorna uma sede",
+            "tags": [
+                "Sede"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "cnpj",
+                    "required": true,
+                    "type": "string"
+                    }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON da sede"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/filiais/{cnpj_sede}": {
+        "get": {
+            "description": "",
+            "summary": "lista filiais de uma sede",
+            "tags": [
+                "Filial"
+            ],
+            "parameters": [
+                {
+             "in": "path",
+             "name": "cnpj_sede",
+             "required": true,
+             "type": "string"
+             }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON das filiais de uma determinada sede"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/filial/{cnpj_sede}": {
+        "post": {
+            "description": "",
+            "summary": "Cria uma nova filial",
+            "tags": [
+                "Filial"
+            ],
+            "parameters": [
+                {
+             "in": "path",
+             "name": "cnpj_sede",
+             "required": true,
+             "type": "string"
+             },
+             {
+                "in": "body",
+                "name": "body",
+                "required": true,
+                "schema": {
+                    "$ref": "#/definitions/Criar_Filial"
+                  }
+                }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retor um JSON da filial criada"
+
+                    },
+                    "422": {
+                    "description": "Número de filiais já atingido (3)"
+                    },
+                    "404": {
+                        "description": "CNPJ da sede não encontrado"
+                        },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/atualizar/filial/{id}": {
+        "put": {
+            "description": "",
+            "summary": "Atualiza uma filial",
+            "tags": [
+                "Filial"
+            ],
+            "parameters": [
+                 {
+             "in": "path",
+             "name": "id",
+             "required": true,
+             "type": "number"
+             },
+             {
+                "in": "body",
+                "name": "body",
+                "required": false,
+                "schema": {
+                    "$ref": "#/definitions/Atualizar_Filial"
+                  }
+                }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON da filial alterada com a alteração feita"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/farmacia/deletar/filial/{id}": {
+        "delete": {
+            "description": "",
+            "summary": "Deletar uma filial",
+            "tags": [
+                "Filial"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "type": "number"
+                    }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Filial deletada :)"
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    },
+                    "404": {
+                        "description": "Faltando dados ou dados vazios"
+                    }
+            }
+        }
+    }
+    },
+    "definitions": {
+        "Criar_Filial": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "string"
+              },
+              "cnpj": {
+                "type": "string"
+              },
+              "endereco": {
+                "type": "string"
+              },
+              "horario_funcionamento": {
+                "type": "string"
+              },
+              "responsavel": {
+                "type": "string"
+              },
+              "telefone": {
+                "type": "string"
+              }
+            }
+          },
+          "Atualizar_Filial": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                    "type": "string"
+                  },
+                  "cnpj": {
+                    "type": "string"
+                  },
+                  "endereco": {
+                    "type": "string"
+                  },
+                  "horario_funcionamento": {
+                    "type": "string"
+                  },
+                  "responsavel": {
+                    "type": "string"
+                  },
+                  "telefone": {
+                    "type": "string"
+                  }
+              }
+          }
+      }
+}

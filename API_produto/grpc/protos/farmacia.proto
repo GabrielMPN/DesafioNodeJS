@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service Farmacia {
+rpc getFarmacia(FarmaciaCnpj) returns (showFarmacia) {}
+}
+
+message FarmaciaCnpj {
+string cnpj = 1;
+}
+
+message showFarmacia {
+    string cnpj = 1;
+    string logo = 2;
+    string nome = 3;
+    string endereco = 4;
+    string horario_funcionamento = 5;
+    string responsavel = 6;
+    string telefone = 7;
+    string tipo = 8;
+}

@@ -1,0 +1,249 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API Produto - microserviço ",
+        "description": "API feita para o desafio NodeJS proposto pela empresa PEDIDO PAGO",
+        "version": "1.0.0",
+        "contact": {
+            "email": "pantuffimpn@hotmail.com"
+        }
+    },
+    "tags": [
+        {
+            "name": "Produto",
+            "description": "Rotas de API produto"
+        }
+    ],
+    "paths": {
+      "/produto/listar": {
+          "get": {
+              "description": "",
+              "summary": "Lista todos os produtos",
+              "tags": [
+                  "Produto"
+              ],
+              "responses": {
+                      "200": {
+                          "description": "Retorna todos os produtos"
+                      },
+                      "500": {
+                          "description": "Erro inesperado"
+                      }
+              }
+          }
+      },
+      "/produto/criar": {
+        "post": {
+            "description": "",
+            "summary": "Cria um novo produto",
+            "tags": [
+                "Produto"
+            ],
+            "parameters": [
+                {
+             "in": "formData",
+             "name": "thumbnail",
+             "required": true,
+             "type": "file"
+             },
+            {
+                "in": "formData",
+                "name": "nome",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "preco",
+                "required": true,
+                "type": "number",
+                "format": "double"
+               },
+               {
+                "in": "formData",
+                "name": "ingredientes",
+                "required": true,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "disponibilidade",
+                "required": true,
+                "type": "integer"
+               },
+               {
+                "in": "formData",
+                "name": "volume",
+                "required": true,
+                "type": "number",
+                "format": "double"
+               },
+               {
+                "in": "formData",
+                "name": "cnpj_farmacia",
+                "required": true,
+                "type": "string"
+               }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retoruna um JSON do produto criado"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    },
+                    "400": {
+                        "description": "Faltando dados ou dados vazios"
+                    },
+                    "404": {
+                        "description": "Farmacia não encontrada"
+                    }
+            }
+        }
+    },
+    "/produto/atualizar/{prodId}": {
+        "put": {
+            "description": "",
+            "summary": "Atualiza um produto",
+            "tags": [
+                "Produto"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "prodId",
+                    "required": true,
+                    "type": "integer"
+                    },
+                {
+             "in": "formData",
+             "name": "thumbnail",
+             "required": false,
+             "type": "file"
+             },
+            {
+                "in": "formData",
+                "name": "nome",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "preco",
+                "required": false,
+                "type": "number",
+                "format": "double"
+               },
+               {
+                "in": "formData",
+                "name": "ingredientes",
+                "required": false,
+                "type": "string"
+               },
+               {
+                "in": "formData",
+                "name": "disponibilidade",
+                "required": false,
+                "type": "integer"
+               },
+               {
+                "in": "formData",
+                "name": "volume",
+                "required": false,
+                "type": "number",
+                "format": "double"
+               }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON do produto atualizado"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/produto/deletar/{prodId}": {
+        "delete": {
+            "description": "",
+            "summary": "Deletar um produto",
+            "tags": [
+                "Produto"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "prodId",
+                    "required": true,
+                    "type": "integer"
+                    }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Produto deletado com sucesso"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/produto/{prodId}": {
+        "get": {
+            "description": "",
+            "summary": "Retorna um produto",
+            "tags": [
+                "Produto"
+            ],
+            "parameters": [
+                {
+             "in": "path",
+             "name": "prodId",
+             "required": true,
+             "type": "integer"
+             }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON do produto"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    },
+    "/produto/clonar/{prodId}": {
+        "post": {
+            "description": "",
+            "summary": "Clona um produto",
+            "tags": [
+                "Produto"
+            ],
+            "parameters": [
+                {
+             "in": "path",
+             "name": "prodId",
+             "required": true,
+             "type": "integer"
+             }
+        ],
+            "responses": {
+                    "200": {
+                        "description": "Retorna um JSON do produto clonado"
+
+                    },
+                    "500": {
+                        "description": "Erro inesperado"
+                    }
+            }
+        }
+    }
+    }
+}
+    
