@@ -132,7 +132,8 @@ exports.post_clone = async(req, res) => {
         preco: produto.dataValues.preco,
         ingredientes: produto.dataValues.ingredientes,
         disponibilidade: produto.dataValues.disponibilidade,
-        volume: produto.dataValues.volume
+        volume: produto.dataValues.volume,
+        cnpj_farmacia: produto.dataValues.cnpj_farmacia
     }
 
     try {
@@ -142,7 +143,8 @@ exports.post_clone = async(req, res) => {
             preco: corpo.preco,
             ingredientes: corpo.ingredientes,
             disponibilidade: corpo.disponibilidade,
-            volume: corpo.volume
+            volume: corpo.volume,
+            cnpj_farmacia: corpo.cnpj_farmacia
         })
         res.status(200).json(corpo)
     } catch (err) {
