@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "API Produto - microserviço ",
-        "description": "API feita para o desafio NodeJS proposto pela empresa PEDIDO PAGO",
+        "description": "API feita para o desafio NodeJS",
         "version": "1.0.0",
         "contact": {
             "email": "pantuffimpn@hotmail.com"
